@@ -1,4 +1,4 @@
-public class PT1 {
+*public class PT1 {
     public static void main(String[] args) {
         int i = 7;
         String number = "판별기";

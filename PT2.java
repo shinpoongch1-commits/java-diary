@@ -12,6 +12,11 @@ MultiplyCalc 객체와 DivideCalc 객체를 생성합니다.
 두 객체에 각각 숫자를 넣어주고, calculate()를 호출하여 연산 결과를 확인하세요.*/
 
 
+
+
+
+/*
+
 class Calculator{
     int a = 0;
     int b = 0;
@@ -49,5 +54,41 @@ public class PT2{
         mydivide.b = 5; 
         mydivide.calculate();
     
+    }
+} */
+
+
+
+class Calculator {
+    int a, b;
+    void calculate() {
+        System.out.println("기본 연산입니다.");
+    }
+}
+
+class MultiplyCalc extends Calculator {
+    @Override // 부모의 메서드를 재정의함
+    void calculate() {
+        System.out.println("곱셈 결과: " + (a * b));
+    }
+}
+
+class DivideCalc extends Calculator {
+    @Override // 부모의 메서드를 재정의함
+    void calculate() {
+        System.out.println("나눗셈 결과: " + (a / b));
+    }
+}
+    
+public class PT2 {
+    public static void main(String[] args) {
+        MultiplyCalc mymulti = new MultiplyCalc();
+        DivideCalc mydivide = new DivideCalc();
+
+        mymulti.a = 10; mymulti.b = 5;
+        mymulti.calculate(); // 이제 다 같은 이름으로 호출 가능!
+
+        mydivide.a = 10; mydivide.b = 5;
+        mydivide.calculate(); 
     }
 }

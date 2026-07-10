@@ -3,9 +3,34 @@ javaMap<String, Integer> price = new HashMap<>();
 ↑                              ↑
  인터페이스 (설계도/규칙)      실제 구현체 (진짜 동작하는 것) */
 
+//import java.util.HashMap;
+//import java.util.Map;
+
 import java.util.HashMap;
 import java.util.Map;
 
+
+public class MapStudy{
+    public static void main(String[] args) {
+        Map<String, Integer> cost = new HashMap<>();
+        cost.put ("apple", 100);
+        cost.put ("orange", 300);
+        cost.put ("banana", 500);
+        cost.put ("grapes", 700);
+
+        System.out.println(cost.get("apple"));
+
+        cost.put("apple",800);
+        System.out.println(cost.get("apple"));
+
+        System.out.println(cost.containsKey("banaana"));
+        cost.remove("grapes");
+        System.out.println(cost.size());
+
+    } 
+}
+
+/* 
 public class MapStudy {
     public static void main(String[] args) {
         Map<String, Integer> price = new HashMap<>();
@@ -24,4 +49,4 @@ public class MapStudy {
 
         System.out.println(price.size());   // 남은 개수 → 2
     }
-}
+} */

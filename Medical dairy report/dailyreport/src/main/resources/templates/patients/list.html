@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>환자</title>
+</head>
+<body>
+<h1>환자리스트</h1>
+
+<table border="1">
+    <tr>
+        <th>구분</th>
+        <th>환자수</th>
+    </tr>
+    <tr th:each="patient : ${patients}">
+        <td th:text="${patient.type}"></td>
+        <td th:text="${#numbers.formatInteger(patient.count, 1, 'COMMA')}"></td>
+    </tr>
+</table>
+</body>
+</html>

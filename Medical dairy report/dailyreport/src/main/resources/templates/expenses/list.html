@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>지출</title>
+</head>
+<body>
+<h1>현금 지출 장부</h1>
+
+<form th:action="@{/expenses}" method="post">
+    항목 <input type="text" name="name" required>
+    금액 <input type="number" name="amount" min="0" required>
+    <button type="submit">등록</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>번호</th>
+        <th>항목</th>
+        <th>금액</th>
+    </tr>
+    <tr th:each="expense : ${expenses}">
+        <td th:text="${expense.id}"></td>
+        <td th:text="${expense.name}"></td>
+        <td th:text="${#numbers.formatInteger(expense.amount, 1, 'COMMA')}"></td>
+    </tr>
+</table>
+<p th:text="'합계: ' + ${#numbers.formatInteger(total, 1, 'COMMA')} + '원'"></p>
+</body>
+</html>

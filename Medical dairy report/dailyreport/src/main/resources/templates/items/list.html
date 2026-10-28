@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>비보험 품목</title>
+</head>
+<body>
+<h1>비보험 품목 리스트</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>품목</th>
+        <th>세부</th>
+        <th>단가</th>
+        <th>마감표 표기</th>
+        <th>사용여부</th>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.detail}"></td>
+        <td th:text="${#numbers.formatInteger(item.unitPrice, 1, 'COMMA')}"></td>
+        <td th:text="${item.printLabel}"></td>
+        <td th:text="${item.active} ? 'Y' : 'N'"></td>
+    </tr>
+</table>
+</body>
+</html>

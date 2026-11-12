@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>대출 계산기</title>
+</head>
+<body>
+<h1>대출 계산기</h1>
+
+<form th:action="@{/calculator}" method="get">
+    대출금 <input type="number" name="loanAmount" th:value="${loanAmount}">
+    연이율(%) <input type="number" name="annualRate" step="0.01" th:value="${annualRate}">
+    기간(개월) <input type="number" name="months" th:value="${months}">
+    선취수수료(%) <input type="number" name="feeRate" step="0.01" th:value="${feeRate}">
+    <button type="submit">계산</button>
+</form>
+
+<p th:text="'월 상환액: ' + ${#numbers.formatInteger(monthlyPayment, 1, 'COMMA')} + '원'"></p>
+<p th:text="'선취수수료: ' + ${#numbers.formatInteger(fee, 1, 'COMMA')} + '원'"></p>
+<p th:text="'실지급액: ' + ${#numbers.formatInteger(netAmount, 1, 'COMMA')} + '원'"></p>
+<p th:text="'총이자: ' + ${#numbers.formatInteger(totalInterest, 1, 'COMMA')} + '원'"></p>
+
+<table border="1">
+    <tr>
+        <th>회차</th>
+        <th>상환액</th>
+        <th>원금</th>
+        <th>이자</th>
+        <th>잔액</th>
+    </tr>
+    <tr th:each="row : ${rows}">
+        <td th:text="${row.seq}"></td>
+        <td th:text="${#numbers.formatInteger(row.payment, 1, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatInteger(row.principal, 1, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatInteger(row.interest, 1, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatInteger(row.balance, 1, 'COMMA')}"></td>
+    </tr>
+</table>
+</body>
+</html>
